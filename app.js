@@ -1,28 +1,22 @@
 var express = require('express');
 var path = require('path');
+var favicon=require('serve-favicon');
 var config = require('config-lite');
 
 var app = express();
 
-app.get('/', function (req, res) {
-  res.send('get a get request');
-});
 
-app.post('/', function (req, res) {
-  res.send('get a POST request');
-});
+var index = require('./routes/index');
+var status = require('./routes/status');
+app.set('x-powered-by',false);
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
 
-app.put('/', function (req, res) {
-  res.send('get a put request');
-});
-app.delete('/', function (req, res) {
-  res.send('get a delete request');
-});
+// uncomment after placing your favicon in /public
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
-// 返回204 No Content
-app.get('/204', function (req, res) {
-  res.status(204).end();
-});
+app.use('/', index);
+app.use('/status', status);
 
 // catch 404 and forword to error handler
 app.use(function (req, res, next) {
@@ -32,8 +26,10 @@ app.use(function (req, res, next) {
 });
 
 app.use(function (err, req, res, next) {
-  console.error(err.stack);
-  res.status(500).end();
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.status(err.status || 500);
+  res.render('error');
 });
 
 app.listen(config.port, config.hostname, function () {

@@ -1,0 +1,34 @@
+extend layout
+
+block content
+  h1= title
+  p
+    a(href='./') /
+    |  | This page.
+  p
+    a(href='./204') /204
+    |  | return 204 NOT content
+  p
+    a(href='/ip') /ip
+    |  | return ip
+  p
+    a(href='./user-agent') /user-agent
+    |  | return user-agent
+  p
+    a(href='./headers') /headers
+    |  | return header dict
+  p
+    a(href='./get') /get
+    |  | return GET data
+  p
+    a /post
+    |  | return POST data
+  p
+    a /put
+    |  | return PUT data
+  p
+    a /delete
+    |  | return DELETE data
+  p
+    a(href='./status/418') /status/:code
+    |  | return HTTP status.data
