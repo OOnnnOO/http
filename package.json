@@ -1,18 +1,33 @@
 {
-  "name": "httptest",
+  "name": "httpbin",
   "version": "1.0.0",
-  "description": "",
+  "description": "HTTP Request & Response Service, written in Node + Express",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_ENV=production pm2 start app.js --node-args='--harmony' --name 'http'"
+    "pm2": "NODE_ENV=production pm2 start index.js --node-args='--harmony' --name 'http'",
+    "start": "NODE_ENV=production node index.js"
   },
-  "author": "",
+  "author": "oonnnoo (hi@lidong.me)",
   "license": "ISC",
   "dependencies": {
     "config-lite": "^1.5.0",
     "express": "^4.15.2",
     "jade": "^1.11.0",
     "serve-favicon": "^2.4.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OOnnnOO/http.git"
+  },
+  "keywords": [
+    "http",
+    "rest",
+    "nodejs",
+    "express"
+  ],
+  "bugs": {
+    "url": "https://github.com/OOnnnOO/http/issues"
+  },
+  "homepage": "https://github.com/OOnnnOO/http#readme"
 }

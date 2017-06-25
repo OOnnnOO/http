@@ -2,14 +2,16 @@ var express = require('express')
 var router = express.Router()
 
 router.get('/', function (req, res, next) {
-  res.render('index', {title: 'index'})
+  res.render('index', {
+    title: 'index'
+  })
 })
 
-// router.get('/ip', function (req, res, next) {
-//   res.send(req.ip);
-// });
-
 router.get('/ip', function (req, res, next) {
+  res.send(req.ip)
+})
+
+router.get('/x-real-ip', function (req, res, next) {
   res.send(req.headers['x-real_ip'])
 })
 
@@ -18,7 +20,6 @@ router.get('/user-agent', function (req, res, next) {
 })
 
 router.get('/headers', function (req, res, next) {
-  // console.log(req);
   res.send(req.headers)
 })
 
@@ -33,6 +34,7 @@ router.post('/post', function (req, res) {
 router.put('/put', function (req, res) {
   res.send('get a put request')
 })
+
 router.delete('/delete', function (req, res) {
   res.send('get a delete request')
 })
