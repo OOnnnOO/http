@@ -8,10 +8,6 @@ router.get('/', function (req, res, next) {
 })
 
 router.get('/ip', function (req, res, next) {
-  res.send(req.ip)
-})
-
-router.get('/x-real-ip', function (req, res, next) {
   res.send(req.headers['x-real_ip'])
 })
 
